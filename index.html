@@ -118,11 +118,10 @@ footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:22px}
 
 <aside class="side">
   <div class="banner"></div>
-  <div class="avatar" id="avatar"><img src="https://github.com/Prince84470/Prince84470.github.io/blob/4e9997378d9f9886fbb89aa43c3e4c62ed31baec/Professional%20Indian%20Corporate%20Headshot.png" alt="Arpit Mishra"></div>
+  <div class="avatar" id="avatar">AM</div>
   <h1>Arpit Mishra</h1>
   <span class="role">Full-Stack Java Developer</span>
   <ul class="info">
-
     <li><i>✉️</i><div><small>Email</small><a href="mailto:mishraarpit994@gmail.com">mishraarpit994@gmail.com</a></div></li>
     <li><i>📍</i><div><small>Location</small>Amethi, Uttar Pradesh, India</div></li>
     <li><i>💼</i><div><small>LinkedIn</small><a href="https://linkedin.com/in/arpit-mishra-3ab330334" target="_blank" rel="noopener">arpit-mishra</a></div></li>
@@ -249,10 +248,11 @@ footer{text-align:center;font-size:.8rem;color:var(--muted);margin-top:22px}
   function tick(){var w=roles[ri];ci+=del?-1:1;el.textContent=w.slice(0,ci);var d=del?45:85;
     if(!del&&ci===w.length){del=true;d=1400}else if(del&&ci===0){del=false;ri=(ri+1)%roles.length;d=350}setTimeout(tick,d)}
   if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=roles[0]}else{tick()}
-  // Optional photo: put photo.jpg next to this file and it will replace the initials
-  var img=new Image();img.alt='Arpit Mishra';
-  img.onload=function(){var a=document.getElementById('avatar');a.textContent='';a.appendChild(img)};
-  img.src='photo.jpg';
+  // Optional photo: add photo.jpg, photo.jpeg, photo.png or photo.webp next to this file
+  var exts=['jpg','jpeg','png','webp'],ei=0,av=document.getElementById('avatar'),nm=document.querySelector('.side h1').textContent;
+  (function load(){if(ei>=exts.length)return;var img=new Image();img.alt=nm;
+    img.onload=function(){av.textContent='';av.appendChild(img)};
+    img.onerror=function(){ei++;load()};img.src='photo.'+exts[ei]})();
 })();
 </script>
 </body>
